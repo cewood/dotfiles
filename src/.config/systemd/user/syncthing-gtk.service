@@ -1,0 +1,10 @@
+[Unit]
+Description=syncthing-gtk
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/syncthing-gtk --minimized
+Restart=always
+
+[Install]
+WantedBy=xsession.target

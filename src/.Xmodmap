@@ -1,0 +1,18 @@
+clear      Lock
+clear      Shift
+
+keycode 9   = Escape
+keycode 66  = Super_L
+keycode 50  = Shift_L Caps_Lock Shift_L Caps_Lock
+keycode 62  = Shift_R Caps_Lock Shift_R Caps_Lock
+add shift  = Shift_L Caps_Lock Shift_R Caps_Lock
+keycode 133 = Super_L
+keycode 37  = Control_L
+keycode 105 = Control_R
+keycode 64  = Alt_L
+keycode 108 = Alt_R
+
+!keycode 179 = XF86AudioPlay
+!keycode 225 = XF86AudioPause
+!keycode 128 = XF86AudioPrev
+!keycode 152 = XF86AudioNext

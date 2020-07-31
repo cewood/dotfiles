@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ ! -f /tmp/trackers_all.txt ]; then
+  wget https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt -O /tmp/trackers_all.txt
+fi
+
+trackers=""
+
+while read line
+do
+  if [[ "${line}" =~ ^.+$ ]]; then
+    trackers="${trackers}&tr=${line}"
+  fi
+done < /tmp/trackers_all.txt
+
+
+OUTPUT="${1}$(echo "${trackers}" | sed 's/:/%3A/g;s/!/%21/g;s/\//%2F/g;')"
+
+echo
+echo "${OUTPUT}" | xclip -in -selection clipboard
+echo "${OUTPUT}"

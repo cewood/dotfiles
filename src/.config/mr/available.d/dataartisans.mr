@@ -1,0 +1,13 @@
+# dataArtisans specific repos
+
+[DEFAULT]
+lib =
+    setauthor_dataartisans() {
+        if [[ "$(git config user.email)" != "cameron@data-artisans.com" ]]; then
+            git config user.name "Cameron Wood"
+            git config user.email "cameron@data-artisans.com"
+        fi
+    }
+
+# Include any dataartisans_*.mr suffixed files, which are generated from github api calls
+include = cat $HOME/.config/mr/available.d/dataartisans_*.mr 2>/dev/null || true

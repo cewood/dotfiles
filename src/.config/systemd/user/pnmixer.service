@@ -1,0 +1,10 @@
+[Unit]
+Description=pnmixer
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/pnmixer
+Restart=always
+
+[Install]
+WantedBy=xsession.target

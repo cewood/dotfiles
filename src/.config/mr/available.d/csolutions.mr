@@ -1,0 +1,13 @@
+# Container Solutions specific repos
+
+[DEFAULT]
+lib =
+    setauthor_csolutions() {
+        if [[ "$(git config user.email)" != "cameron.wood@container-solutions.com" ]]; then
+            git config user.name "Cameron Wood"
+            git config user.email "cameron.wood@container-solutions.com"
+        fi
+    }
+
+# Include any csolutions_*.mr suffixed files, which are generated from github api calls
+include = cat $HOME/.config/mr/available.d/csolutions_*.mr 2>/dev/null || true

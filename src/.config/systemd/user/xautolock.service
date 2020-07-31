@@ -1,0 +1,10 @@
+[Unit]
+Description=xautolock
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/xautolock -time 10 -locker 'i3lock --color=ffe95c --bar-indicator --bar-orientation=horizontal --ignore-empty-password --bar-base-width=1 -detectsleep' 
+Restart=always
+
+[Install]
+WantedBy=xsession.target

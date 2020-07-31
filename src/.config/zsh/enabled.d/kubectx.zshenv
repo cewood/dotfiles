@@ -1,0 +1,1 @@
+../available.d/kubectx.zshenv

@@ -1,0 +1,10 @@
+[Unit]
+Description=blueman-applet
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/blueman-applet
+Restart=always
+
+[Install]
+WantedBy=xsession.target

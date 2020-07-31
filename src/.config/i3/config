@@ -1,0 +1,232 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+hide_edge_borders smart
+workspace_auto_back_and_forth yes
+
+force_focus_wrapping yes # Doesn't seem to change anything
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. ISO 10646 = Unicode
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, if you need a lot of unicode glyphs or
+# right-to-left text rendering, you should instead use pango for rendering and
+# chose a FreeType font, such as:
+# font pango:DejaVu Sans Mono 10
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec roxterm
+
+# kill focused window
+bindsym $mod+Shift+Q kill
+
+# start rofi a nice dmenu alternative (a program launcher)
+bindsym $mod+d exec rofi -show run
+
+# start rofi in drun mode, for launching .desktop entries
+bindsym $mod+Shift+d exec rofi -show drun
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+J move left
+bindsym $mod+Shift+K move down
+bindsym $mod+Shift+L move up
+bindsym $mod+Shift+colon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, default)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout default
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindcode $mod+d focus child
+bindsym $mod+shift+a focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Mod1+Left workspace prev
+bindsym $mod+Mod1+Right workspace next
+bindsym $mod+Mod1+J workspace prev
+bindsym $mod+Mod1+colon workspace next
+
+# move focused container to workspace
+bindsym $mod+Shift+exclam move container to workspace 1
+bindsym $mod+Shift+at move container to workspace 2
+bindsym $mod+Shift+numbersign move container to workspace 3
+bindsym $mod+Shift+dollar move container to workspace 4
+bindsym $mod+Shift+percent move container to workspace 5
+bindsym $mod+Shift+asciicircum move container to workspace 6
+bindsym $mod+Shift+ampersand move container to workspace 7
+bindsym $mod+Shift+asterisk move container to workspace 8
+bindsym $mod+Shift+parenleft move container to workspace 9
+bindsym $mod+Shift+parenright move container to workspace 10
+
+# Handy for moving windows and workspaces to outputs relatively
+bindsym $mod+comma move container to output left
+bindsym $mod+period move container to output right
+bindsym $mod+Shift+comma move workspace to output left
+bindsym $mod+Shift+semicolon move workspace to output down
+bindsym $mod+Shift+apostrophe move workspace to output up
+bindsym $mod+Shift+period move workspace to output right
+
+# reload the configuration file
+bindsym $mod+Shift+C reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+R restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+# move floating windows with keys
+#  taken from https://faq.i3wm.org/question/4615/how-can-i-move-a-floating-window-with-keys/
+mode "move" {
+    bindsym $mod+Tab focus right
+
+    bindsym Left  move left
+    bindsym Down  move down
+    bindsym Up    move up
+    bindsym Right move right
+
+    bindsym j         move left
+    bindsym k         move down
+    bindsym l         move up
+    bindsym semicolon move right
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+m mode "move" focus floating
+
+
+# keyboard media/screen/keyboad-backlight keys
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight - 5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight + 5
+bindsym XF86KbdBrightnessDown exec --no-startup-id kbdlight down
+bindsym XF86KbdBrightnessUp exec --no-startup-id kbdlight up
+bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master toggle
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%-
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 3%+
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+
+## scratchpad shortcuts
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show 
+
+
+bar {
+	status_command i3status
+	mode dock
+	position top
+	workspace_buttons yes
+}
+
+
+# Force certain apps/windows to floating mode by default
+#  use xorg-xprop (xprop) to identify window properties
+for_window [class="Speedcrunch"] floating enable
+for_window [class="Galculator"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Volumeicon" title="Preferences"] floating enable
+for_window [title="ExitMenu"] floating enable
+for_window [class="Skype" title="cameron.wood.siteminder - Skype"] floating enable
+
+
+# startup application using systemd user units with a target
+exec systemctl --user start xsession.target
+
+# change the background randomly on startup
+exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
+
+## Remap Caps to Super, and Shift_L + Sift_R = Toggle_Caps
+exec /usr/bin/setxkbmap -option "shift:both_capslock"
+exec /usr/bin/setxkbmap -option "caps:super"
+
+# i3lock binding
+bindsym $mod+Shift+X exec i3lock --color=ffe95c --bar-indicator --bar-orientation=horizontal --ignore-empty-password --bar-base-width=1
+
