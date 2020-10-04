@@ -223,9 +223,8 @@ exec systemctl --user start xsession.target
 # change the background randomly on startup
 exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 
-## Remap Caps to Super, and Shift_L + Sift_R = Toggle_Caps
-exec /usr/bin/setxkbmap -option "shift:both_capslock"
-exec /usr/bin/setxkbmap -option "caps:super"
+## Load any key mappings
+exec xmodmap ~/.Xmodmap
 
 # i3lock binding
 bindsym $mod+Shift+X exec i3lock --color=ffe95c --bar-indicator --bar-orientation=horizontal --ignore-empty-password --bar-base-width=1
