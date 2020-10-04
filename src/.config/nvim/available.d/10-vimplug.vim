@@ -52,14 +52,6 @@ Plug 'dyng/ctrlsf.vim', { 'commit': 'ae116d4' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim', { 'commit': '95f025e' }
 
-" " Helm-swoop inspired multi-buffer search and replace tool
-" "  NOTE: possibly replace this with vim-enmasse and vim-grepper
-" Plug 'pelodelfuego/vim-swoop', { 'commit': 'cbefdb7' }
-
-" NeoVim/Vim plugin performing project-wide async search and replace
-"  NOTE: possibly replace this with vim-enmasse and vim-grepper
-Plug 'eugen0329/vim-esearch', { 'commit': '9d26f8d' }
-
 " Improved incremental searching for Vim
 Plug 'haya14busa/incsearch.vim', { 'commit': '25e2547' }
 
@@ -106,7 +98,7 @@ Plug 'python/black', { 'commit': 'a4399f3' }
 Plug 'python-mode/python-mode', { 'commit': '0e38320' }
 
 " Go development plugin for Vim
-Plug 'fatih/vim-go', { 'tag': 'v1.22' }
+Plug 'fatih/vim-go', { 'commit': 'b919c60' }
 
 
 
@@ -165,8 +157,7 @@ Plug 'dbmrq/vim-ditto', { 'commit': 'c21f0e2' }
 Plug 'reedes/vim-lexical', { 'commit': 'fb42333' }
 
 " Lightweight auto-correction for Vim.
-"  NOTE: maybe delete this, doesn't seem as useful and not
-"   much options to configure it, so not much benefits
+"  NOTE: am i actually using this, if not remove
 Plug 'reedes/vim-litecorrect', { 'commit': '8d5f233' }
 
 " Automatically replacing spelling mistakes and typos as you type
@@ -177,10 +168,6 @@ Plug 'junegunn/limelight.vim', { 'commit': '106fb57' }
 
 " Distraction-free writing in Vim.
 Plug 'junegunn/goyo.vim', { 'commit': '5b8bd03' }
-
-" Better whitespace highlighting for Vim.
-"  NOTE: get this working or remove it
-"Plug 'ntpeters/vim-better-whitespace', { 'commit': '70a38fa' }
 
 
 
@@ -225,12 +212,11 @@ Plug 'tpope/vim-sleuth', { 'commit': '7a104e3' }
 " Smooth scrolling for Vim done right
 Plug 'psliwka/vim-smoothie', { 'commit': 'd3de4fb' }
 
+" Vim mapping for sorting a range of text
+Plug 'christoomey/vim-sort-motion', { 'commit': '49dfca' }
+
 " The fancy start screen for Vim
 Plug 'mhinz/vim-startify', { 'commit': 'e25fbe1' }
-
-" " Combine with netrw to create a delicious salad dressing
-" "  NOTE: does this make sense with dirvish installed?
-" Plug 'tpope/vim-vinegar', { 'commit': 'c38ea21' }
 
 " Jump to random Vim documentation
 Plug 'mhinz/vim-randomtag', { 'commit': '5784fa1' }
@@ -240,10 +226,6 @@ Plug 'reedes/vim-thematic', { 'commit': '5bc225d' }
 
 " A vim plugin to display the indention levels with thin vertical lines
 Plug 'Yggdroot/indentLine', { 'commit': '4764873' }
-
-" " Vim plugin, insert or delete brackets, parens, quotes in pair
-" "  NOTE: finding this a bit annoying already, might remove
-" Plug 'jiangmiao/auto-pairs', { 'commit': '39f06b8' }
 
 " Tame the quickfix window
 Plug 'romainl/vim-qf', { 'commit': '87e9a7d' }
@@ -269,11 +251,13 @@ Plug 'chriskempson/base16-vim', { 'commit': 'f6e70df' }
 " A dark Vim colorscheme for color blind vimmers. But not only.
 Plug 'romainl/vim-dichromatic', { 'commit': '5f24f5f' }
 
+" Equinusocio's material theme for Neovim/Vim
+Plug 'chuling/equinusocio-material.vim', { 'commit': '719608b' }
+
 " Solarized, without the bullshit.
 Plug 'romainl/flattened', { 'commit': '921777a' }
 
 " A colorful, dark color scheme for Vim
-"  NOTE: maybe remove this one
 Plug 'nanotech/jellybeans.vim', { 'commit': 'fdc7b7e' }
 
 " Molokai color scheme for Vim
@@ -323,6 +307,9 @@ Plug 'rakr/vim-one', { 'commit': '6695e13' }
 
 " A vim/neovim colorscheme
 Plug 'sts10/vim-pink-moon', { 'commit': 'd6a4b41' }
+
+" VSCode Plastic theme port for vim/neovim
+Plug 'flrnd/plastic.vim', { 'commit': '8a50b70' }
 
 " Optimized Solarized colorschemes. Best served with true-color terminals!
 Plug 'lifepillar/vim-solarized8', { 'commit': '30fd919' }
