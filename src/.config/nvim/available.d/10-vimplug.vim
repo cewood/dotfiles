@@ -20,25 +20,25 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 " ============================================================================
 
 " Asynchronous Lint Engine
-Plug 'w0rp/ale', { 'commit': '1d4f985' }
+Plug 'w0rp/ale', { 'commit': '08295ce' }
 
 " Quickly locate faulty plugins, using binary search
 Plug 'dahu/bisectly', { 'commit': 'cff50c7' }
 
 " Dark powered asynchronous completion framework for neovim
-Plug 'Shougo/deoplete.nvim', { 'commit': 'acae373' }
+Plug 'Shougo/deoplete.nvim', { 'commit': 'e897e01' }
 
 " Dark powered asynchronous unite all interfaces for Neovim/Vim8
-Plug 'Shougo/denite.nvim', { 'commit': 'db2d7c3' }
+Plug 'Shougo/denite.nvim', { 'commit': '7a71d54' }
 
-" Vim plugin that displays tags in a window, ordered by scope
-Plug 'majutsushi/tagbar', { 'commit': '387bbad' }
+" " Vim plugin that displays tags in a window, ordered by scope
+" Plug 'majutsushi/tagbar', { 'commit': '387bbad' }
 
 " Run your tests at the speed of thought
 Plug 'janko-m/vim-test', { 'commit': 'c4b7320' }
 
-" A Vim plugin that manages your tag files
-Plug 'ludovicchabant/vim-gutentags', { 'commit': 'eecb136' }
+" " A Vim plugin that manages your tag files
+" Plug 'ludovicchabant/vim-gutentags', { 'commit': 'eecb136' }
 
 
 
@@ -49,7 +49,11 @@ Plug 'ludovicchabant/vim-gutentags', { 'commit': 'eecb136' }
 Plug 'dyng/ctrlsf.vim', { 'commit': 'ae116d4' }
 
 " A command-line fuzzy finder written in Go, and the Vim companion plugin
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', {
+    \ 'commit': 'dba14d2',
+    \ 'dir': '~/.fzf',
+    \ 'do': './install --all',
+    \ }
 Plug 'junegunn/fzf.vim', { 'commit': '95f025e' }
 
 " Improved incremental searching for Vim
@@ -67,13 +71,13 @@ Plug 'Olical/vim-enmasse', { 'commit': 'c2286f1' }
 " ============================================================================
 
 " Show a changes using Vim's sign column
-Plug 'mhinz/vim-signify', { 'commit': 'ea87e05' }
+Plug 'mhinz/vim-signify', { 'commit': 'abb1c89' }
 
 " A Git wrapper so awesome, it should be illegal
-Plug 'tpope/vim-fugitive', { 'commit': '2564c37' }
+Plug 'tpope/vim-fugitive', { 'commit': '21ed533' }
 
 " An awesome git handling plugin for Vi1797333m
-Plug 'lambdalisue/gina.vim', { 'commit': '932cdbf' }
+Plug 'lambdalisue/gina.vim', { 'commit': '6cd15a5' }
 
 
 
@@ -84,7 +88,7 @@ Plug 'lambdalisue/gina.vim', { 'commit': '932cdbf' }
 " Language Server Protocol (LSP) support for vim and neovim
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
-    \ 'commit': '92b11f5',
+    \ 'commit': '0e5c954',
     \ 'do': 'bash install.sh',
     \ }
 
@@ -95,7 +99,7 @@ Plug 'editorconfig/editorconfig-vim', { 'commit': '68f8136' }
 Plug 'python/black', { 'commit': 'a4399f3' }
 
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
-Plug 'python-mode/python-mode', { 'commit': '0e38320' }
+Plug 'python-mode/python-mode', { 'commit': '6316b01' }
 
 " Go development plugin for Vim
 Plug 'fatih/vim-go', { 'commit': 'b919c60' }
@@ -110,14 +114,14 @@ Plug 'fatih/vim-go', { 'commit': 'b919c60' }
 Plug 'wellle/targets.vim', { 'commit': '4a5e9c0' }
 
 " The missing motion for Vim
-Plug 'justinmk/vim-sneak', { 'commit': '91192d8' }
+Plug 'justinmk/vim-sneak', { 'commit': '7d82982' }
 
 " A Vim alignment plugin
 Plug 'junegunn/vim-easy-align', { 'commit': '1cd724d' }
 
 " vim match-up: even better % fist_oncoming navigate and highlight matching
 "  words fist_oncoming modern matchit and matchparen replacement
-Plug 'andymass/vim-matchup', { 'commit': '55cff87' }
+Plug 'andymass/vim-matchup', { 'commit': '6836995' }
 
 " Should stop using this plugin
 " " True Sublime Text style multiple selections for Vim
@@ -189,7 +193,7 @@ Plug 'TaDaa/vimade', { 'commit': '1192d6f' }
 Plug 'itchyny/lightline.vim', { 'commit': '83ae633' }
 
 " Directory viewer for Vim
-Plug 'justinmk/vim-dirvish', { 'commit': '0188d6f' }
+Plug 'justinmk/vim-dirvish', { 'commit': '9c0dc32' }
 
 " Helpers for UNIX
 Plug 'tpope/vim-eunuch', { 'commit': '10da325' }
@@ -207,7 +211,7 @@ Plug 'mhinz/vim-sayonara', { 'commit': '357135c' }
 Plug 'vim-scripts/ScrollColors', { 'commit': '2ce50b9' }
 
 " Heuristically set buffer options
-Plug 'tpope/vim-sleuth', { 'commit': '7a104e3' }
+Plug 'tpope/vim-sleuth', { 'commit': 'ea3f065' }
 
 " Smooth scrolling for Vim done right
 Plug 'psliwka/vim-smoothie', { 'commit': 'd3de4fb' }
@@ -336,7 +340,7 @@ Plug 'tyrannicaltoucan/vim-deep-space', { 'commit': '126d52f' }
 
 " A solid language pack for Vim
 "  loaded late to let other plugins set things up first
-Plug 'sheerun/vim-polyglot', { 'tag': 'v4.2.0' }
+Plug 'sheerun/vim-polyglot', { 'commit': '449bb88' }
 
 
 
