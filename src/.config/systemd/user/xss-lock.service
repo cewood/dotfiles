@@ -1,0 +1,13 @@
+[Unit]
+Description=xss-lock
+PartOf=graphical-session.target
+
+[Service]
+ExecStartPre=/usr/bin/xset s on
+ExecStartPre=/usr/bin/xset s 600
+ExecStart=/usr/bin/xss-lock --transfer-sleep-lock -- i3lock --nofork --color=ffe95c --bar-indicator --bar-orientation=horizontal --ignore-empty-password --bar-base-width=1
+Restart=always
+Type=simple
+
+[Install]
+WantedBy=xsession.target

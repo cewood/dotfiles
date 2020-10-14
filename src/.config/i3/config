@@ -227,5 +227,5 @@ exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 exec xmodmap ~/.Xmodmap
 
 # i3lock binding
-bindsym $mod+Shift+X exec i3lock --color=ffe95c --bar-indicator --bar-orientation=horizontal --ignore-empty-password --bar-base-width=1
+bindsym $mod+Shift+X exec xset s activate
 
