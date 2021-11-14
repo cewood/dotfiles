@@ -179,15 +179,27 @@ bindsym $mod+m mode "move" focus floating
 
 
 # keyboard media/screen/keyboad-backlight keys
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight - 5
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight + 5
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5
 bindsym XF86KbdBrightnessDown exec --no-startup-id kbdlight down
 bindsym XF86KbdBrightnessUp exec --no-startup-id kbdlight up
-bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master toggle
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%-
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 3%+
+#bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master toggle
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%-
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 3%+
+
+
+# bind my system wide bindings for media players,
+#  i prefer this to using the media keys since i
+#  don't have any of those on my laptop keyboard,
+#  and would prefer this to using an app to make
+#  those keycodes from key combos
+bindsym Mod1+Shift+j exec playerctl play-pause
+bindsym Mod1+Shift+k exec playerctl --all-players stop
+bindsym Mod1+Shift+l exec playerctl next
+bindsym Mod1+Shift+h exec playerctl previous
 
 bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl --all-players stop
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
@@ -209,7 +221,7 @@ bar {
 
 # Force certain apps/windows to floating mode by default
 #  use xorg-xprop (xprop) to identify window properties
-for_window [class="Speedcrunch"] floating enable
+for_window [class="SpeedCrunch"] floating enable
 for_window [class="Galculator"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Volumeicon" title="Preferences"] floating enable
@@ -221,7 +233,7 @@ for_window [class="Skype" title="cameron.wood.siteminder - Skype"] floating enab
 exec systemctl --user start xsession.target
 
 # change the background randomly on startup
-exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
+exec feh --randomize --bg-fill ~/Pictures/wallpapers/
 
 ## Load any key mappings
 exec xmodmap ~/.Xmodmap
@@ -229,3 +241,7 @@ exec xmodmap ~/.Xmodmap
 # i3lock binding
 bindsym $mod+Shift+X exec xset s activate
 
+# dunst bindings
+bindsym Control+period exec dunstctl close
+bindsym Control+Shift+period exec dunstctl close-all
+bindsym Control+comma exec dunstctl history-pop

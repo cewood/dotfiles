@@ -8,12 +8,11 @@ if &compatible
 endif
 
 
-" Required: add vim-plug to the runtimepath
-"set runtimepath+=~/.local/share/nvim/vim-plug/plug.vim
-"source ~/.local/share/nvim/vim-plug/plug.vim
-
 " Required: specify a directory for plugins
 call plug#begin('~/.local/share/nvim/vim-plug')
+
+" Register vim-plug as a plugin so we get help (e.g. :help plug-options)
+Plug 'junegunn/vim-plug'
 
 
 " Utilities
@@ -40,6 +39,12 @@ Plug 'janko-m/vim-test', { 'commit': 'c4b7320' }
 " " A Vim plugin that manages your tag files
 " Plug 'ludovicchabant/vim-gutentags', { 'commit': 'eecb136' }
 
+" An implementation of the Popup API from vim in Neovim
+Plug 'nvim-lua/popup.nvim', { 'commit': '5e3bece' }
+
+" All the lua functions I don't want to write twice
+Plug 'nvim-lua/plenary.nvim', { 'commit': 'ca51b684' }
+
 
 
 " Search
@@ -54,7 +59,10 @@ Plug 'junegunn/fzf', {
     \ 'dir': '~/.fzf',
     \ 'do': './install --all',
     \ }
-Plug 'junegunn/fzf.vim', { 'commit': '95f025e' }
+Plug 'junegunn/fzf.vim', { 'commit': 'e34f6c1' }
+
+" Find, Filter, Preview, Pick. All lua, all the time
+Plug 'nvim-telescope/telescope.nvim', { 'commit': '777ff91' }
 
 " Improved incremental searching for Vim
 Plug 'haya14busa/incsearch.vim', { 'commit': '25e2547' }
@@ -88,21 +96,35 @@ Plug 'lambdalisue/gina.vim', { 'commit': '6cd15a5' }
 " Language Server Protocol (LSP) support for vim and neovim
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
-    \ 'commit': '0e5c954',
+    \ 'commit': 'a42594c',
     \ 'do': 'bash install.sh',
     \ }
 
 " EditorConfig plugin for Vim
 Plug 'editorconfig/editorconfig-vim', { 'commit': '68f8136' }
 
-" The uncompromising Python code formatter
-Plug 'python/black', { 'commit': 'a4399f3' }
+" " The uncompromising Python code formatter
+" Plug 'python/black', { 'commit': 'a4399f3' }
 
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
-Plug 'python-mode/python-mode', { 'commit': '6316b01' }
+Plug 'python-mode/python-mode', {
+    \ 'commit': '6316b01',
+    \ 'for': ['python'],
+    \ }
 
 " Go development plugin for Vim
-Plug 'fatih/vim-go', { 'commit': 'b919c60' }
+Plug 'fatih/vim-go', {
+    \ 'commit': 'f3ebf20',
+    \ 'do': ':GoInstallBinaries',
+    \ 'for': ['go'],
+    \ }
+
+" Automatically generate Go test boilerplate from your source code
+Plug 'buoto/gotests-vim', {
+    \ 'commit': 'e0ad687',
+    \ 'do': 'go get -u github.com/cweill/gotests/...',
+    \ 'for': ['go'],
+    \ }
 
 
 
@@ -114,7 +136,7 @@ Plug 'fatih/vim-go', { 'commit': 'b919c60' }
 Plug 'wellle/targets.vim', { 'commit': '4a5e9c0' }
 
 " The missing motion for Vim
-Plug 'justinmk/vim-sneak', { 'commit': '7d82982' }
+Plug 'justinmk/vim-sneak', { 'commit': '65e5e46' }
 
 " A Vim alignment plugin
 Plug 'junegunn/vim-easy-align', { 'commit': '1cd724d' }
@@ -122,10 +144,6 @@ Plug 'junegunn/vim-easy-align', { 'commit': '1cd724d' }
 " vim match-up: even better % fist_oncoming navigate and highlight matching
 "  words fist_oncoming modern matchit and matchparen replacement
 Plug 'andymass/vim-matchup', { 'commit': '6836995' }
-
-" Should stop using this plugin
-" " True Sublime Text style multiple selections for Vim
-" Plug 'terryma/vim-multiple-cursors', { 'commit': 'f4fd6ad' }
 
 " Comment stuff out
 Plug 'tpope/vim-commentary', { 'commit': '141d9d3' }
@@ -187,10 +205,13 @@ Plug 'mbbill/undotree', { 'commit': '9172c17' }
 
 " Fade your inactive buffers and preserve the syntax highlighting!
 "  NOTE: previously disabled for high CPU usage of python3 client :(
-Plug 'TaDaa/vimade', { 'commit': '1192d6f' }
+Plug 'TaDaa/vimade', { 'commit': '9b92543' }
 
 " A light and configurable statusline/tabline plugin for Vim
 Plug 'itchyny/lightline.vim', { 'commit': '83ae633' }
+
+" Go to Terminal or File manager
+Plug 'justinmk/vim-gtfo', { 'commit': 'd85e7a2' }
 
 " Directory viewer for Vim
 Plug 'justinmk/vim-dirvish', { 'commit': '9c0dc32' }
@@ -206,6 +227,9 @@ Plug 'dbakker/vim-projectroot', { 'commit': '6878712' }
 
 " Sane buffer/window deletion.
 Plug 'mhinz/vim-sayonara', { 'commit': '357135c' }
+
+" Quickly close (bdelete) several buffers at once
+Plug 'Asheq/close-buffers.vim', { 'commit': '0b29fbc' }
 
 " Colorsheme Scroller, Chooser, and Browser
 Plug 'vim-scripts/ScrollColors', { 'commit': '2ce50b9' }
@@ -255,11 +279,17 @@ Plug 'chriskempson/base16-vim', { 'commit': 'f6e70df' }
 " A dark Vim colorscheme for color blind vimmers. But not only.
 Plug 'romainl/vim-dichromatic', { 'commit': '5f24f5f' }
 
+" An ambitious theme for vim
+Plug 'embark-theme/vim', { 'commit': '2dd0f25', 'as': 'embark' }
+
 " Equinusocio's material theme for Neovim/Vim
 Plug 'chuling/equinusocio-material.vim', { 'commit': '719608b' }
 
 " Solarized, without the bullshit.
 Plug 'romainl/flattened', { 'commit': '921777a' }
+
+" Bluish color scheme for Vim and Neovim
+Plug 'cocopon/iceberg.vim', { 'commit': '203d568' }
 
 " A colorful, dark color scheme for Vim
 Plug 'nanotech/jellybeans.vim', { 'commit': 'fdc7b7e' }
@@ -291,6 +321,9 @@ Plug 'junegunn/seoul256.vim', { 'commit': 'af0f087' }
 " A Vim Colorscheme
 Plug 'AlessandroYorba/Sierra', { 'commit': 'c78bf67' }
 
+" An intergalactic space theme for Vim, Terminal, and more!
+Plug 'pineapplegiant/spaceduck', { 'commit': '836a90f' }
+
 " A Vim color scherafi/awesome-vim-colorschemesme loosely based on the Spacegray Xcode theme.
 Plug 'ajh17/spacegray.vim', { 'commit': '79936a4' }
 
@@ -299,6 +332,9 @@ Plug 'dracula/vim', { 'commit': 'bfbc3ca' }
 
 " Vim adaptation of the Afterglow colorscheme
 Plug 'danilo-augusto/vim-afterglow', { 'commit': 'dd529e1' }
+
+" Light (& dark) color scheme inspired by iA Writer
+Plug 'reedes/vim-colors-pencil', { 'commit': 'fcbdca1' }
 
 " A dark color scheme for Vim & gVim
 Plug 'w0ng/vim-hybrid', { 'commit': 'cc58baa' }
@@ -327,7 +363,44 @@ Plug 'rakr/vim-two-firewatch', { 'commit': 'efa0689' }
 " An intergalactically friendly color scheme for Vim.
 Plug 'tyrannicaltoucan/vim-deep-space', { 'commit': '126d52f' }
 
+" A cold, dark colourscheme for Vim
+Plug 'arzg/vim-substrata', { 'commit': 'f7b71f3' }
 
+" Bluish color scheme for Vim and Neovim
+Plug 'cocopon/iceberg.vim', { 'commit': '866f9f4' }
+
+" A simplified and optimized Gruvbox colorscheme for Vim
+Plug 'lifepillar/vim-gruvbox8', { 'commit': '73bd562' }
+
+" A clean, dark Neovim theme written in Lua
+Plug 'folke/tokyonight.nvim', { 'commit': 'e3ad603' }
+
+" Port of modus-themes in neovim, high contrast (WCAG AAA) 
+Plug 'ishan9299/modus-theme-vim', { 'commit': '6b82be8' }
+
+" Clean & Elegant Color Scheme inspired by Atom One and Material
+Plug 'sainnhe/edge', { 'commit': '178a7e6' }
+
+" A colour scheme for terminals, Vim and friends
+Plug 'fenetikm/falcon', { 'commit': '0893abf' }
+
+" Neovim theme based off of the Nord Color Palette
+Plug 'shaunsingh/nord.nvim', { 'commit': '0581423' }
+
+" Port of VSCode's Moonlight colorscheme for NeoVim written in Lua
+Plug 'shaunsingh/moonlight.nvim', { 'commit': 'e24e421' }
+
+" Comfortable & Pleasant Color Scheme for Vim
+Plug 'sainnhe/everforest', { 'commit': 'e459308' }
+
+" Dark color scheme for Vim and vim-airline, inspired by Dark+ in Visual Studio Code
+Plug 'tomasiser/vim-code-dark', { 'commit': '670fed5' }
+
+" Material colorscheme for NeoVim written in Lua
+Plug 'marko-cerovac/material.nvim', { 'commit': '8aab072' }
+
+" High Contrast & Vivid Color Scheme based on Monokai Pro
+Plug 'sainnhe/sonokai', { 'commit': 'cff29d8' }
 
 "" Comment here
 "Plug '', { 'commit': '' }

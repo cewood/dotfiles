@@ -2,9 +2,11 @@
 Description=xsession for starting other user units, exec'd during i3wm startup
 BindsTo=graphical-session.target
 Wants=blueman-applet.service
+Wants=cbatticon.service
 Wants=compton.service
 Wants=dropbox.service
 Wants=dunst.service
+Wants=geoclue-agent.service
 Wants=nm-applet.service
 Wants=pnmixer.service
 Wants=redshift-gtk.service

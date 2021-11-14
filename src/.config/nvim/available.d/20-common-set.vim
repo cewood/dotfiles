@@ -73,8 +73,28 @@ set visualbell           " Visual bell, duh!
 setlocal spell
 "filetype off             " required! by Vundle originaly, iirc?
 
-" Enable true color support
-set termguicolors
+
+" Set the correct color capabilities for the terminal in use,
+"  see https://neovim.io/doc/user/term.html for details
+"
+if $TERM =~ '^\(rxvt\|screen\|interix\|putty\)\(-.*\)\?$'
+  set notermguicolors
+elseif $TERM =~ '^\(tmux\|iterm\|vte\|gnome\)\(-.*\)\?$'
+  set termguicolors
+elseif $TERM =~ '^\(xterm\)\(-.*\)\?$'
+  if $XTERM_VERSION != ''
+    set termguicolors
+  elseif $KONSOLE_PROFILE_NAME != ''
+    set termguicolors
+  elseif $VTE_VERSION != ''
+    set termguicolors
+  else
+    set notermguicolors
+  endif
+endif
+
+" " Enable true color support
+" set termguicolors
 
 " Re-enable the mouse in neovim 0.2+
 set mouse=a

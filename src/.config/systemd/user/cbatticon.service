@@ -1,0 +1,10 @@
+[Unit]
+Description=cbatticon
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/cbatticon
+Restart=always
+
+[Install]
+WantedBy=xsession.target
