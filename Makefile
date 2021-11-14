@@ -1,15 +1,25 @@
+TARGET = src
+
+.PHONY: init-check
+init-check:
+	TEST=true ./.stow-fold.sh ${TARGET}
+
+.PHONY: init
+init:
+	./.stow-fold.sh ${TARGET}
+
 .PHONY: stow-check
 stow-check:
 	stow \
 	  --verbose=2 \
 	  --no \
-	  src
+	  ${TARGET}
 
 .PHONY: stow
 stow:
 	stow \
 	  --verbose=2 \
-	  src
+	  ${TARGET}
 
 .PHONY: adopt-check
 adopt-check:
@@ -17,14 +27,14 @@ adopt-check:
 	  --verbose=2 \
 	  --no \
 	  --adopt \
-	  src
+	  ${TARGET}
 
 .PHONY: adopt
 adopt:
 	stow \
 	  --verbose=2 \
 	  --adopt \
-	  src
+	  ${TARGET}
 
 .PHONY: restow-check
 restow-check:
@@ -32,14 +42,14 @@ restow-check:
 	  --verbose=2 \
 	  --no \
 	  --restow \
-	  src
+	  ${TARGET}
 
 .PHONY: restow
 restow:
 	stow \
 	  --verbose=2 \
 	  --restow \
-	  src
+	  ${TARGET}
 
 .PHONY: git-crypt-status
 git-crypt-status:

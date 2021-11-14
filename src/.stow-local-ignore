@@ -1,0 +1,5 @@
+# Stow ignore list, uses gitignore patterns
+#  https://www.gnu.org/software/stow/manual/html_node/Types-And-Syntax-Of-Ignore-Lists.html
+
+README.md
+.stow-fold
